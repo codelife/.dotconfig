@@ -1,0 +1,75 @@
+"2.3.1 (created: 2010/04/07 18:56:53)
+set runtimepath=/home/king/.vimperator
+source! /home/king/.vimperatorrc.local
+" vim: set ft=vimperator:
+"============================
+"whatis it look like
+"============================
+set titlestring=
+set laststatus=0
+set showmode
+set editor=urxvt\ -e\ vim
+set guioptions=r
+set complete=ls
+set wildmode=list:longest
+"============================
+"about the control
+"============================
+let mapleader = ","
+noremap <leader>q  ZZ "save session and quit the browser
+noremap <leader>r :restart<cr>
+noremap <leader>b :tabopen baidu  
+noremap j 4j
+noremap k 4k
+noremap , <c-o>
+noremap ; <c-i>
+noremap s <C-c>
+map <leader>h :set guioptions!=rBT<CR>
+noremap [ [[
+noremap ] ]]
+set nextpattern+=\s*下一页|下一张|下一篇|下一頁|下页|后页\s*
+set previouspattern+=\s*上一页|上一张|上一篇|上一頁|上页|前页\s*
+"gh Go home.open the homepage in the current tab.
+"gH Go home open the homepage in a new tab
+"gu Go to the parent directory
+"gU Go to the root of the web site
+"f open page in current Tab
+"F open page in new Tab
+"y/p copy/paste the url of the current page to the clipboard 
+"P   open the url in new tab which in clipboard
+" PassThrough gmail and greader,locationchange to exec command automatic
+"autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
+"============================
+"about the Tab
+"============================
+noremap h gT
+noremap l <c-n>
+noremap < g^
+noremap > g$
+"==========================
+"about yank paste 
+"==========================
+noremap <C-V> <C-v>
+noremap <C-Z> <C-z>
+noremap <C-c> <C-v><C-c>
+noremap <C-a> <C-v><C-a>
+cnoremap <C-c> <C-v><C-c>
+cnoremap <C-v> <C-v><C-v>
+cnoremap <C-x> <C-v><C-x>
+inoremap <C-a> <C-v><C-a>
+inoremap <C-c> <C-v><C-c>
+inoremap <C-v> <C-v><C-v>
+inoremap <C-x> <C-v><C-x>
+inoremap <C-z> <C-v><C-z>
+inoremap <C-y> <C-v><C-y>
+
+"the shortcut  for cmdline
+cnoremap <C-A>      <Home>
+cnoremap <C-E>      <End>
+cnoremap <C-K>      <C-U>
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <C-D> <del>
+cnoremap <C-H> <backspace>
