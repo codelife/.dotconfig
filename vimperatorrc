@@ -18,6 +18,8 @@ let mapleader = ","
 noremap <leader>q  ZZ "save session and quit the browser
 noremap <leader>r :restart<cr>
 noremap <leader>b :tabopen baidu  
+noremap <leader>g :tabopen google  
+noremap <leader>c :tabopen http://www.iciba.com/
 noremap j 4j
 noremap k 4k
 noremap , <c-o>
