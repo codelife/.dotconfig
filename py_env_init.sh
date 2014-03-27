@@ -29,7 +29,6 @@ if [ $dist = 'Fedora' -o $dist = 'CentOS' ] ;then
     package_manager="yum install -y "
 else
     package_manager="apt-get install -y"
-else
 fi
 
 $package_manager wget
@@ -49,3 +48,4 @@ cd pip-1.1 && python setup.py install
 pip install gevent
 pip install lxml
 pip install MySQL-python
+rm pip-1.1.tar.gz

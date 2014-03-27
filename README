@@ -1,1 +1,6 @@
 some tools and software's configuration 
+put in $HOME
+.xinitrc   ---- enable xmodmap map
+.Xmodmap   ---- xmodmap configuration
+.vimperatorrc --- vimperator cofiguration
+
