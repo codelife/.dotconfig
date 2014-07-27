@@ -30,7 +30,7 @@ if [ $dist = 'Fedora' -o $dist = 'CentOS' ] ;then
 else
     package_manager="apt-get install -y"
 fi
-
+package_manager = "yum install -y"
 $package_manager wget
 $package_manager python-setuptools
 $package_manager gcc
@@ -44,8 +44,5 @@ $package_manager python-devel
 $package_manager mysql-devel
 wget http://pypi.python.org/packages/source/p/pip/pip-1.1.tar.gz#md5=62a9f08dd5dc69d76734568a6c040508
 tar xzf pip-1.1.tar.gz
-cd pip-1.1 && python setup.py install
-pip install gevent
-pip install lxml
-pip install MySQL-python
+cd pip-1.1 && python setup.py install && ( pip install gevent; pip install lxml; pip install MySQL-python)
 rm pip-1.1.tar.gz
