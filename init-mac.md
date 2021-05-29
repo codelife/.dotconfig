@@ -89,7 +89,6 @@ pip3 install glances
 ## 开发相关的包
 brew install ack ripgrep wget ripgrep the_silver_searcher fzf
 brew install coreutils lua luarocks
-brew install ansible
 brew install redis docker git nginx  mysql@5.7
 
 ## 做link, 不然找不到mysql mysql_config等命令
@@ -100,38 +99,58 @@ echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
 ~/.config/karabiner/karabiner.json
 
 ## 安装nerd-font现实图标. 然后修改iterm中的字体non-ASCII text为nerd-font
-```brew tap homebrew/cask-fonts
+```
+brew tap homebrew/cask-fonts
 
 brew install --cask font-hack-nerd-font```
 
 brew install neovim
 echo 'alias vim=neovim' >> ~/.zshrc
 pip3 install pynvim
+```
 
-# more coc-extension
+### 快速安装命令,node需手动安装(版本问题,不兼容项目不用brew安装最新版)
+```
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+/bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
 
-```brew install node
-brew install npm && npm install --global prettier
-npm i eslint eslint-plugin-vue -D
-npm install --global htmlhint
-npm install yarn
-npm install -g neovim
+brew install python3
+brew install Ack ripgrep wget ripgrep the_silver_searcher fzf
+brew install ctags
+brew install neovim
+brew install thefuck
+brew install autojump
 
-pip3 install pylint
-pip3 install flake8
-pip3 install pyflakes
-pip3 install black
-pip3 install isort
-pip3 install autopep8
-pip3 install pynvim==0.4.3
+#brew install ansible
+#brew install redis
+#brew install mysql@5.7
+
+
+
+pip3 install virutalenv
+pip3 install virtualenvwrapper
+
+pip3 install pylint flake8 pyflakes black isort autopep8
+pip3 install glances
+pip3 install ipython
+
+pip3 install jedi
 pip3 install jedi-language-server
+pip3 install pynvim==0.4.3
 (vim 中安装vim-jedi或者coc-jedi)用户代码补全和跳转等功能
 
 
-vue项目需要执行以下命令coc-vetur才能正常工作
-npm i eslint eslint-plugin-vue -D
-
+npm install -g neovim
 npm install -g bash-language-server
 npm install -g sql-formatter
-npm install node-sql-parser --save
+npm install -g node-sql-parser
+npm install -g webpack
+npm install -g vue-cli
+npm install -g htmlhint
+npm install -g yarn
+npm i eslint eslint-plugin-vue -D
+
+
+allvirtualenv pip3 install ipython
+allvirtualenv pip3 install pynvim
 ```
