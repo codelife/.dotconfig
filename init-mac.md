@@ -1,4 +1,6 @@
-##安装brew--> 建议更换镜像源方式
+## 安装brew
+
+**建议更换镜像源方式**
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 如果慢使用以下方法
 /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
@@ -42,9 +44,12 @@ themes  自带主题文件的存在放位置
 custom 个性化配置目录，自安装的插件和主题可放这里
 
 **设置shell的配置文件`~/.zshrc` 更改配置切勿修改～/.bashrc
-# 自动更新zsh，不提示更新
+
+## 自动更新zsh，不提示更新
+```
 echo "DISABLE_UPDATE_PROMPT=true" >> ~/.zshrc
 echo 'HIST_STAMPS="yyyy-mm-dd"' >> ~/.zshrc
+```
 
 ## install powerlevel10k
 
@@ -77,14 +82,18 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
-# usage:
-# mkvirtualenv abc; cpvirtualenv abc abc1; lsvirtualenv;  lssitepackages
-# 所有环境都安装jedi
+## usage:
+```
+mkvirtualenv abc; cpvirtualenv abc abc1; lsvirtualenv;  lssitepackages
+```
+## 所有环境都安装jedi
+```
 allvirtualenv pip3 install jedi
 " >> ~/.zshrc
 pip3 install jedi ipython
 #top 的替代品
 pip3 install glances
+```
 
 ## 开发相关的包
 brew install ack ripgrep wget ripgrep the_silver_searcher fzf
@@ -109,7 +118,7 @@ echo 'alias vim=neovim' >> ~/.zshrc
 pip3 install pynvim
 ```
 
-### 快速安装命令,node需手动安装(版本问题,不兼容项目不用brew安装最新版)
+## 快速安装命令,node需手动安装(版本问题,不兼容项目不用brew安装最新版)
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
