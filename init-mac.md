@@ -1,12 +1,13 @@
 ## 安装brew
 
 **建议更换镜像源方式**
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 如果慢使用以下方法
 /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
 
 更换为清华大学源
-
+```
 git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
@@ -14,21 +15,26 @@ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna
 git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
 
 brew update
+```
 
-设置环境变量需要注意终端Shell的类型: echo $SHELL
+设置环境变量需要注意终端Shell的类型: 
+```echo $SHELL
 echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/bottles' >> ~/.zshrc
 source ~/.zshrc
+```
 
 ### 安装iTerm2
-brew install --cask iterm2
+`brew install --cask iterm2`
 
 * install colorscheme for iterm2
+```
 git clone git@github.com:mbadolato/iTerm2-Color-Schemes.git
 cd iTerm2-Color-Schemes && tools/import-scheme.sh schemes/*
+```
 
 ### 调整shell为zsh
 * `chsh -s $(which zsh)`
-* install ohmyzh  `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+* `install ohmyzh  `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 cd ~/.oh-my-zsh/
 lib 提供了核心功能的脚本库
