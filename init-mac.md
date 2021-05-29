@@ -30,16 +30,27 @@ cd iTerm2-Color-Schemes && tools/import-scheme.sh schemes/*
 
 cd ~/.oh-my-zsh/
 lib 提供了核心功能的脚本库
+
 tools 提供安装、升级等功能的快捷工具
+
 plugins 自带插件的存在放位置
+
 templates 自带模板的存在放位置
+
 themes  自带主题文件的存在放位置
+
 custom 个性化配置目录，自安装的插件和主题可放这里
 
 **设置shell的配置文件`~/.zshrc` 更改配置切勿修改～/.bashrc
 # 自动更新zsh，不提示更新
 echo "DISABLE_UPDATE_PROMPT=true" >> ~/.zshrc
 echo 'HIST_STAMPS="yyyy-mm-dd"' >> ~/.zshrc
+
+## install powerlevel10k
+
+```
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
 
 ## install neovim
 
