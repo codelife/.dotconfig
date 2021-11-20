@@ -124,6 +124,17 @@ echo 'alias vim=neovim' >> ~/.zshrc
 pip3 install pynvim
 ```
 
+## 安装字体(选用)
+```
+更换iterm字体
+Anonymous Pro 
+Courier Prime 
+Hack Nerd Font 
+Hack Nerd Font Mono 
+Inconsolata
+Roboto Mono
+```
+
 ## 快速安装命令,node需手动安装(版本问题,不兼容项目不用brew安装最新版)
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
