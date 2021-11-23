@@ -9,7 +9,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="/Users/lijunya/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -77,7 +77,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "zeta" "honukai")
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump web-search history history-substring-search thefuck vi-mode)
+plugins=(git autojump history history-substring-search vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,7 +116,6 @@ VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 alias vim=nvim
-alias fk=fuck
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -124,9 +123,13 @@ alias fk=fuck
 alias gs='git status'
 alias ga='git add -A .'
 alias gd='git diff '
+alias gt='git stash '
+alias gtp='git stash pop'
 alias gcr='git checkout release '
 alias gcm='git checkout master '
+alias gcq='git checkout qa '
 alias lss='netstat -anp tcp |grep -i listen'
+alias top='glances'
 
 
 # FileSearch
@@ -135,3 +138,6 @@ function r() { grep "$1" ${@:2} -R . }
 
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
