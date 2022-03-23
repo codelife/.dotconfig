@@ -58,57 +58,67 @@ echo 'HIST_STAMPS="yyyy-mm-dd"' >> ~/.zshrc
 ```
 
 ## install powerlevel10k
-
-```
+``` shell
 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-## install neovim
-
-brew install neovim
-
-##install python3
+## install python
+```shell
 brew install python3
-防止使用mac自带的python. 增加一下配置
-echo "export PATH=$HOME/bin:/usr/local/bin:$PATH" >> ~/.zshrc  && source ~/.zshrc
+```
 
-修改pip的源，加速
+### 修改pip的源，加速
+```
 修改配置文件: ~/.pip/pip.conf
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 
 [install]
 trusted-host=mirrors.aliyun.com
+```
 
-## 安装python的包
-pip3 install pylint flake8 pyflakes black isort autopep8  virtualenv virtualenvwrapper
+## install python extends & neovim & tool
 
-echo "
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
+```shell
+brew install ansible redis mysql@5.7 neovim docker git nginx coreutils lua luarocks
+brew install Ack ripgrep wget ripgrep the_silver_searcher ctags fzf neovim thefuck autojump
+pip3 install virutalenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython pynvim glances rich pynvim
+ipython profile create
+#防止使用mac自带的python. 增加一下配置
+echo "export PATH=$HOME/bin:/usr/local/bin:$PATH" >> ~/.zshrc  && source ~/.zshrc
+echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
+```
+
+## 添加python配置文件
+
+```shell
+cat << EOF >> ~/.zshrc 
+export WORKON_HOME=~/.virtualenvs
+export PROJECT_HOME=~/Projects
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
-## usage:
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+alias vim="~/local/bin/nvim/bin/nvim"
+EOF
 ```
+
+## python 自动加载和丰富的颜色显示
+ipython profile create 
+然后把下面几行加到新生成profile文件中
+```
+c.InteractiveShellApp.exec_lines = []
+c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
+c.InteractiveShellApp.exec_lines.append('%autoreload 2')
+c.InteractiveShellApp.exec_lines.append('import rich')
+c.InteractiveShellApp.exec_lines.append('rich.pretty.install()')
+```
+
+## virtualenv usage
+
+```shell
 mkvirtualenv abc; cpvirtualenv abc abc1; lsvirtualenv;  lssitepackages
-```
-## 所有环境都安装jedi
-```
 allvirtualenv pip3 install jedi
-" >> ~/.zshrc
-pip3 install jedi ipython
-#top 的替代品
-pip3 install glances
 ```
-
-## 开发相关的包
-brew install ack ripgrep wget ripgrep the_silver_searcher fzf
-brew install coreutils lua luarocks
-brew install redis docker git nginx  mysql@5.7
-
-## 做link, 不然找不到mysql mysql_config等命令
-brew link mysql@5.7
-echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
 
 ## 修改键盘按键映射
 ~/.config/karabiner/karabiner.json
@@ -116,9 +126,7 @@ echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
 ## 安装nerd-font现实图标. 然后修改iterm中的字体non-ASCII text为nerd-font
 ```
 brew tap homebrew/cask-fonts
-
 brew install --cask font-hack-nerd-font```
-
 brew install neovim
 echo 'alias vim=neovim' >> ~/.zshrc
 pip3 install pynvim
@@ -135,37 +143,8 @@ Inconsolata
 Roboto Mono
 ```
 
-## 快速安装命令,node需手动安装(版本问题,不兼容项目不用brew安装最新版)
-```
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-/bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
-
-brew install python3
-brew install Ack ripgrep wget ripgrep the_silver_searcher fzf
-brew install ctags
-brew install neovim
-brew install thefuck
-brew install autojump
-
-#brew install ansible
-#brew install redis
-#brew install mysql@5.7
-
-
-
-pip3 install virutalenv
-pip3 install virtualenvwrapper
-
-pip3 install pylint flake8 pyflakes black isort autopep8
-pip3 install glances
-pip3 install ipython
-
-pip3 install jedi
-pip3 install jedi-language-server
-pip3 install pynvim==0.4.3
-(vim 中安装vim-jedi或者coc-jedi)用户代码补全和跳转等功能
-
-
+## nodejs支持
+```shell
 npm install -g neovim
 npm install -g bash-language-server
 npm install -g sql-formatter
@@ -175,8 +154,5 @@ npm install -g vue-cli
 npm install -g htmlhint
 npm install -g yarn
 npm i eslint eslint-plugin-vue -D
-
-
-allvirtualenv pip3 install ipython
-allvirtualenv pip3 install pynvim
 ```
+
