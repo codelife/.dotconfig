@@ -1,10 +1,11 @@
 ## 安装brew
 
 **建议更换镜像源方式**
-
+```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-如果慢使用以下方法
+#如果慢使用以下方法
 /bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
+```
 
 更换为清华大学源
 ```
@@ -23,18 +24,19 @@ echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebre
 source ~/.zshrc
 ```
 
-### 安装iTerm2
-`brew install --cask iterm2`
-
-* install colorscheme for iterm2
+## 安装iTerm2
 ```
+brew install --cask iterm2
+#install colorscheme for iterm2
 git clone git@github.com:mbadolato/iTerm2-Color-Schemes.git
 cd iTerm2-Color-Schemes && tools/import-scheme.sh schemes/*
 ```
 
-### 调整shell为zsh
-* `chsh -s $(which zsh)`
-* `install ohmyzh  `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+## 调整shell为zsh
+```
+chsh -s $(which zsh)
+install ohmyzh  `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 
 cd ~/.oh-my-zsh/
 lib 提供了核心功能的脚本库
@@ -145,7 +147,13 @@ Roboto Mono
 
 ## nodejs支持
 ```shell
+brew install node
+brew install npm
+# npm加速
+npm config set registry https://registry.npm.taobao.org
+npm config set disturl https://npm.taobao.org/dist
 npm install -g neovim
+npm install --global prettier
 npm install -g bash-language-server
 npm install -g sql-formatter
 npm install -g node-sql-parser
@@ -155,4 +163,7 @@ npm install -g htmlhint
 npm install -g yarn
 npm i eslint eslint-plugin-vue -D
 ```
+
+
+
 
