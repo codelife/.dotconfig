@@ -113,6 +113,9 @@ c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
 c.InteractiveShellApp.exec_lines.append('%autoreload 2')
 c.InteractiveShellApp.exec_lines.append('from rich import pretty')
 c.InteractiveShellApp.exec_lines.append('pretty.install()')
+c.InteractiveShellApp.exec_lines.append('import json')
+c.InteractiveShellApp.exec_lines.append('import arrow')
+c.InteractiveShell.editor = 'vim'
 ```
 
 ## virtualenv usage
