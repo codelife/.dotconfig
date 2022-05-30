@@ -64,6 +64,11 @@ echo 'HIST_STAMPS="yyyy-mm-dd"' >> ~/.zshrc
 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
+## install fig shell autocmpeletion
+``` shell
+brew install --cask fig
+```
+
 ## install python
 ```shell
 brew install python3
@@ -83,8 +88,9 @@ trusted-host=mirrors.aliyun.com
 
 ```shell
 brew install ansible redis mysql@5.7 neovim docker git nginx coreutils lua luarocks
-brew install Ack ripgrep wget ripgrep the_silver_searcher ctags fzf neovim thefuck autojump
-pip3 install virutalenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython pynvim glances rich pynvim
+brew install Ack ripgrep wget ripgrep the_silver_searcher ctags fzf neovim thefuck autojump 
+pip3 install virutalenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython pynvim mccabe rich sqlfluff 
+pip3 install glances ranger-fm typeshed pysnooper Fabric3 django-comment-migrate jsonpath
 ipython profile create
 #防止使用mac自带的python. 增加一下配置
 echo "export PATH=$HOME/bin:/usr/local/bin:$PATH" >> ~/.zshrc  && source ~/.zshrc
@@ -121,7 +127,10 @@ c.InteractiveShell.editor = 'vim'
 ## virtualenv usage
 
 ```shell
-mkvirtualenv abc; cpvirtualenv abc abc1; lsvirtualenv;  lssitepackages
+mkvirtualenv abc;
+cpvirtualenv abc abc1; 
+lsvirtualenv;  
+lssitepackages
 allvirtualenv pip3 install jedi
 ```
 
@@ -131,7 +140,12 @@ allvirtualenv pip3 install jedi
 ## 安装nerd-font现实图标. 然后修改iterm中的字体non-ASCII text为nerd-font
 ```
 brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font```
+brew search nerd-font
+brew install --cask font-fira-code-nerd-font
+brew install --cask font-victor-mono-nerd-font
+brew install --cask font-iosevka-nerd-font-mono
+brew install --cask font-hack-nerd-font
+
 brew install neovim
 echo 'alias vim=neovim' >> ~/.zshrc
 pip3 install pynvim
@@ -164,6 +178,7 @@ npm install -g webpack
 npm install -g vue-cli
 npm install -g htmlhint
 npm install -g yarn
+npm install -g eslint_d
 npm i eslint eslint-plugin-vue -D
 ```
 
