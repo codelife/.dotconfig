@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,7 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/codelife/sonar-scanner-4.7.0.2747-macosx/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/lijunya/.oh-my-zsh"
@@ -115,7 +117,8 @@ export PROJECT_HOME=~/Projects
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-alias vim=nvim
+alias vim="~/local/nvim0.7.0/bin/nvim"
+alias lvim="~/.local/bin/lvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -123,13 +126,17 @@ alias vim=nvim
 alias gs='git status'
 alias ga='git add -A .'
 alias gd='git diff '
+alias gdh='git diff HEAD~1'
+alias gdh2='git diff HEAD~2'
 alias gt='git stash '
 alias gtp='git stash pop'
 alias gcr='git checkout release '
-alias gcm='git checkout master '
-alias gcq='git checkout qa '
+alias gcm='git checkout master && git pull'
+alias gcq='git checkout qa && git pull'
 alias lss='netstat -anp tcp |grep -i listen'
 alias top='glances'
+alias glog='git log --pretty --abbrev-commit  --graph'
+alias c='clear'
 
 
 # FileSearch
@@ -141,3 +148,7 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+ENDPOINTS=http://127.0.0.1:2379,http://127.0.0.1:2479,http://127.0.0.1:2579
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
