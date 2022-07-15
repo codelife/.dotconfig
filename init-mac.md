@@ -35,7 +35,7 @@ cd iTerm2-Color-Schemes && tools/import-scheme.sh schemes/*
 ## 调整shell为zsh
 ```
 chsh -s $(which zsh)
-install ohmyzh  `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
 cd ~/.oh-my-zsh/
@@ -89,7 +89,7 @@ trusted-host=mirrors.aliyun.com
 ```shell
 brew install ansible redis mysql@5.7 neovim docker git nginx coreutils lua luarocks
 brew install Ack ripgrep wget ripgrep the_silver_searcher ctags fzf neovim thefuck autojump 
-pip3 install virutalenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython pynvim mccabe rich sqlfluff 
+pip3 install virtualenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython pynvim mccabe rich sqlfluff 
 pip3 install glances ranger-fm typeshed pysnooper Fabric3 django-comment-migrate jsonpath
 ipython profile create
 #防止使用mac自带的python. 增加一下配置
