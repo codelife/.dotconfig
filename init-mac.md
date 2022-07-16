@@ -19,13 +19,15 @@ brew update
 ```
 
 设置环境变量需要注意终端Shell的类型: 
-```echo $SHELL
+```shell
+echo $SHELL
+chsh -s $(which zsh)
 echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/bottles' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 ## 安装iTerm2
-```
+```shell
 brew install --cask iterm2
 #install colorscheme for iterm2
 git clone git@github.com:mbadolato/iTerm2-Color-Schemes.git
@@ -34,7 +36,6 @@ cd iTerm2-Color-Schemes && tools/import-scheme.sh schemes/*
 
 ## 调整shell为zsh
 ```
-chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
@@ -88,13 +89,12 @@ trusted-host=mirrors.aliyun.com
 
 ```shell
 brew install ansible redis mysql@5.7 neovim docker git nginx coreutils lua luarocks
-brew install Ack ripgrep wget ripgrep the_silver_searcher ctags fzf neovim thefuck autojump 
-pip3 install virtualenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython pynvim mccabe rich sqlfluff 
+brew install Ack ripgrep wget ripgrep the_silver_searcher universal-ctags fzf thefuck autojump 
+pip3 install virtualenv virtualenvwrapper pylint flake8 pyflakes black isort autopep8 ipython ipython-autoimport pynvim mccabe rich sqlfluff 
 pip3 install glances ranger-fm typeshed pysnooper Fabric3 django-comment-migrate jsonpath
 ipython profile create
-#防止使用mac自带的python. 增加一下配置
-echo "export PATH=$HOME/bin:/usr/local/bin:$PATH" >> ~/.zshrc  && source ~/.zshrc
-echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
+mkdir ~/.virtualenvs
+mkdir ~/Projects
 ```
 
 ## 添加python配置文件
@@ -103,10 +103,10 @@ echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
 cat << EOF >> ~/.zshrc 
 export WORKON_HOME=~/.virtualenvs
 export PROJECT_HOME=~/Projects
-VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-alias vim="~/local/bin/nvim/bin/nvim"
+alias vim="/opt/homebrew/bin/nvim"
+alias python3="ipython"
 EOF
 ```
 
@@ -115,12 +115,13 @@ ipython profile create
 然后把下面几行加到新生成profile文件中
 ```
 c.InteractiveShellApp.exec_lines = []
-c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
-c.InteractiveShellApp.exec_lines.append('%autoreload 2')
-c.InteractiveShellApp.exec_lines.append('from rich import pretty')
-c.InteractiveShellApp.exec_lines.append('pretty.install()')
-c.InteractiveShellApp.exec_lines.append('import json')
-c.InteractiveShellApp.exec_lines.append('import arrow')
+c.InteractiveShellApp.exec_lines.append("try:\n    %load_ext ipython_autoimport\nexcept ImportError: pass")
+c.InteractiveShellApp.exec_lines.append("%load_ext autoreload")
+c.InteractiveShellApp.exec_lines.append("%autoreload 2")
+c.InteractiveShellApp.exec_lines.append("from rich import pretty")
+c.InteractiveShellApp.exec_lines.append("pretty.install()")
+c.InteractiveShellApp.exec_lines.append("import json")
+c.InteractiveShellApp.exec_lines.append("import arrow")
 c.InteractiveShell.editor = 'vim'
 ```
 
@@ -145,15 +146,10 @@ brew install --cask font-fira-code-nerd-font
 brew install --cask font-victor-mono-nerd-font
 brew install --cask font-iosevka-nerd-font-mono
 brew install --cask font-hack-nerd-font
-
-brew install neovim
-echo 'alias vim=neovim' >> ~/.zshrc
-pip3 install pynvim
 ```
 
-## 安装字体(选用)
+## 安装字体,更换iterm字体
 ```
-更换iterm字体
 Anonymous Pro 
 Courier Prime 
 Hack Nerd Font 
@@ -181,7 +177,3 @@ npm install -g yarn
 npm install -g eslint_d
 npm i eslint eslint-plugin-vue -D
 ```
-
-
-
-
