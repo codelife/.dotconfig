@@ -176,4 +176,14 @@ npm install -g htmlhint
 npm install -g yarn
 npm install -g eslint_d
 npm i eslint eslint-plugin-vue -D
+npm i eslint \
+      @typescript-eslint/parser \
+      @typescript-eslint/eslint-plugin \
+      prettier \
+      eslint-config-prettier \
+      eslint-plugin-prettier \
+      eslint-plugin-react \
+      eslint-plugin-import \
+      eslint-import-resolver-typescript \
+      -D
 ```
