@@ -188,6 +188,7 @@ npm i eslint \
       -D
 ```
 ## golang
+```shell
 brew install bufbuild/buf/buf
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install github.com/bufbuild/buf-language-server/cmd/bufls@latest
