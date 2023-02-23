@@ -187,3 +187,16 @@ npm i eslint \
       eslint-import-resolver-typescript \
       -D
 ```
+## golang
+brew install bufbuild/buf/buf
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install github.com/bufbuild/buf-language-server/cmd/bufls@latest
+go install  github.com/wxnacy/wgo
+go install github.com/segmentio/golines@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install mvdan.cc/gofumpt@latest
+go install entgo.io/ent/cmd/ent@latest
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google/protobuf/timestamp.proto@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+go install github.com/google/wire/cmd/wire@latest
