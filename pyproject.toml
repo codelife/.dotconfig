@@ -1,10 +1,11 @@
-#python项目的ruff相关配置. 默认放在项目根目录. 如果项目目录找不,自动去以下文件找linux: ~/.config/ruff/pyproject.toml, mac: ~/Library/Application Support/ruff/pyproject.toml 
 [tool.ruff]
 select = [
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
+    "N",  # pep8-naming
     "F",  # pyflakes
     "I",  # isort
+    "DJ",  # flake8-django
     "B",  # flake8-bugbear
     "C4",  # flake8-comprehensions
     "UP",  # pyupgrade
@@ -13,6 +14,10 @@ select = [
     "RET", # flake8-return
     "PTH", # flake8-pathlib
     "FIX", # flake8-fixme
+    "TD", # flake8-todo
+    "R", # flake8-requirements
+    "PT", # flake8-pytest-style
+    "SIM", # flake8-simplify
 ]
 line-length = 120
 unsafe-fixes = true # fix all errors that can be fixed automatically
