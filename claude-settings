@@ -1,0 +1,99 @@
+
+⏺ 下面是当前会话可见的全部配置 — 按系统级（~/.claude/）和项目级（仓库内）分层。
+
+  一、Plugins（共 10 个，均来自 claude-plugins-official 市场）
+
+  源：GitHub anthropics/claude-plugins-official，缓存于 ~/.claude/plugins/cache/claude-plugins-official/
+
+  ┌───────────────────┬─────────────────┬─────────┬─────────────────────────────────────────────────────────┐
+  │       插件        │      范围       │  版本   │                          作用                           │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ superpowers       │ user            │ 5.1.0   │ 核心 skill 库（TDD/调试/计划等）                        │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ frontend-design   │ user            │ b392f51 │ 前端 UI/UX 实现 skill                                   │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ context7          │ user            │ b392f51 │ Upstash Context7 文档 MCP                               │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ github            │ user            │ b392f51 │ GitHub 官方 MCP                                         │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ playwright        │ user            │ b392f51 │ 浏览器自动化 MCP（Microsoft）                           │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ slack             │ user            │ 1.0.0   │ Slack MCP                                               │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ code-simplifier   │ user            │ 1.0.0   │ 代码简化 agent                                          │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ feature-dev       │ user            │ b392f51 │ code-explorer / code-architect / code-reviewer 三 agent │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ ralph-loop        │ user            │ 1.0.0   │ /loop 自循环                                            │
+  ├───────────────────┼─────────────────┼─────────┼─────────────────────────────────────────────────────────┤
+  │ claude-code-setup │ local（本仓库） │ 1.0.0   │ 推荐 hook/skill/MCP/subagent                            │
+  └───────────────────┴─────────────────┴─────────┴─────────────────────────────────────────────────────────┘
+
+  二、Skills
+
+  用户级 ~/.claude/skills/（4 个，独立于 plugin）
+
+  - find-skills → 符号链接到 ~/.agents/skills/find-skills（外部目录）
+  - impeccable → 符号链接到 ~/.agents/skills/impeccable — 前端 UI 设计/重设计/审核
+  - stepcode-fb — /fb 注入（disable-model-invocation）
+  - stepcode-retry — /retry 注入（disable-model-invocation）
+
+  Plugin 提供的 skills
+
+  - superpowers/skills/：brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development,
+   systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+  - feature-dev/agents/：code-architect, code-explorer, code-reviewer
+
+  项目级 .claude/skills/
+
+  - react-doctor — 修改 React 后跑 npx react-doctor@latest --verbose --diff 检查健康分
+
+  三、MCP servers（运行时已连接 4 个）
+
+  均由 plugin 注入（每个 plugin 缓存目录里的 .mcp.json）：
+  - plugin:context7:context7 — 文档查询（resolve-library-id / query-docs）
+  - plugin:playwright:playwright — 浏览器自动化（30+ 工具） 
+  - plugin:slack:slack — Slack（HTTP MCP，需 OAuth；当前未认证）
+  - ScraplingServer — 网页抓取（fetch / stealthy_fetch / 会话）
+
+  ▎ github plugin 已装但其 MCP 未出现在当前工具列表中（可能未启用或需配置 token）。
+
+  四、系统级配置（~/.claude/settings.json）
+
+  {
+    "model": "claude-opus-4-7",
+    "theme": "dark",
+    "enabledPlugins": { 上述 9 个 user 插件 }
+  }
+
+  五、项目级配置
+
+  /Users/junyali/codelife/luban/.claude/settings.json
+
+  {
+    "hooks": {
+      "PostToolBatch": [{"hooks": [{"type":"command","command":"sh \"$CLAUDE_PROJECT_DIR/.claude/hooks/react-doctor.sh\""}]}]
+    }
+  }
+
+  ▎ 钩子：每批工具调用后跑 react-doctor.sh（脚本会检测是否是 Edit/Write/MultiEdit/NotebookEdit/ApplyPatch 才扫描）。
+
+  .claude/settings.local.json
+
+  仅启用本地范围插件 claude-code-setup。
+
+  项目 Memory（.claude/memory/MEMORY.md，跨机器同步、入 git）
+
+  - feedback_progress_in_todo.md — 双机交替开发，规划/进度落 todo.md
+  - feedback_options_in_todo.md — 候选 sprint 先写进 todo.md 再开工
+  - feedback_auto_commit_push.md — smoke 通过自动 commit+push
+  - feedback_init_workflow.md — 新会话先读 memory+todo
+
+  项目根 CLAUDE.md
+
+  作为最高优先级用户指令（覆盖默认/skill）。要点：spec-first OpenAPI 流程、模块约定、Atlas 迁移、本地端口（Postgres 5433 / Redis 6380 / Backend 8080 / Frontend 5173）、K8s 标签命名等。
+
+  其他与 Claude 协作相关的目录（未提交，git status 显示为 untracked）
+
+  - .agents/skills/react-doctor/ — 项目级 react-doctor skill 源
+  - .impeccable/ — impeccable skill 运行产物（critique / design.json）
